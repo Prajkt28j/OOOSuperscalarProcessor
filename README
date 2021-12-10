@@ -1,0 +1,23 @@
+1. Type "make" to build.  (Type "make clean" first if you already compiled and want to recompile from scratch.)
+
+2. Run trace reader:
+
+   To run without throttling output:
+   ./sim 256 32 4 gcc_trace.txt
+
+   To run with throttling (via "less"):
+   ./sim 256 32 4 gcc_trace.txt | less
+
+3. Run for 8 validation tests
+
+./sim 16 8 1 val_trace_gcc1 >results/res1.txt
+diff -iw results/res1.txt validation/val1.txt
+
+./sim 16 8 2 val_trace_gcc1
+./sim 60 15 3 val_trace_gcc1
+
+./sim 64 16 8 val_trace_gcc1
+./sim 64 16 4 val_trace_perl1
+./sim 128 16 5 val_trace_perl1
+./sim 256 64 5 val_trace_perl1
+./sim 512 64 7 val_trace_perl1
